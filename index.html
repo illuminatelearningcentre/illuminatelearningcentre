@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illiminate Learning Centre | Grades 9-12 STEM Tutoring</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #004d80;
+            --secondary-blue: #0073e6;
+            --accent-green: #28a745;
+            --bright-green: #3cd070;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-container img {
+            height: 100px;
+            border-radius: 16px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-blue);
+        }
+
+        .btn-nav {
+            background-color: var(--accent-green);
+            color: var(--white) !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            transition: background 0.3s !important;
+        }
+
+        .btn-nav:hover {
+            background-color: #218838 !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 77, 128, 0.95), rgba(0, 115, 230, 0.85)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--bright-green);
+            color: var(--white);
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            background-color: var(--accent-green);
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        .highlight-box {
+            background: #eef7ff;
+            border-left: 4px solid var(--secondary-blue);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+        }
+
+        /* Subjects Grid */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .subject-card {
+            background: var(--white);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 4px solid var(--secondary-blue);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .subject-card i {
+            font-size: 2.8rem;
+            color: var(--secondary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .subject-card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--primary-blue);
+        }
+
+        /* Programs */
+        .programs-container {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.8rem;
+            text-align: center;
+        }
+
+        .program-card.featured {
+            border: 2px solid var(--accent-green);
+            background: #f4fbf6;
+        }
+
+        .program-card h4 {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Registration Form */
+        .registration-section {
+            background: linear-gradient(to right, #f0f7ff, #e6ffed);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .form-container {
+            max-width: 750px;
+            margin: auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            color: var(--dark-text);
+        }
+
+        input, select, textarea {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--secondary-blue);
+        }
+
+        .submit-btn {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        /* Contact Details & Info */
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card i {
+            font-size: 2rem;
+            color: var(--accent-green);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="G image c.jpg" alt="Illiminate Learning Centre Logo">
+                <div class="logo-text">
+                    ILLIMINATE
+                    <span>LEARNING CENTRE</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#subjects">Subjects</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#register" class="btn-nav">Register Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge-container">
+                <span class="badge">Grades 9 - 12</span>
+                <span class="badge">In-Person & Online</span>
+                <span class="badge">Regular • AP • IB</span>
+            </div>
+            <h1>Illiminating the Path to Academic Excellence</h1>
+            <p>Master High School Math, Physics, Chemistry, and Biology with customized, high-impact tutoring designed for top university preparation.</p>
+            <a href="#register" class="cta-btn">Book a Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">Welcome to Illiminate Learning Centre</h2>
+        <p class="section-subtitle">Empowering the next generation of scientists, engineers, and leaders.</p>
+        
+        <div class="about-grid">
+            <div class="about-text">
+                <p>At <strong>Illiminate Learning Centre</strong>, we believe that every student has the potential to master STEM subjects when given the right guidance, structure, and encouragement.</p>
+                <p>High school grades 9 through 12 are critical foundation years. Whether a student is struggling to grasp complex concepts or aiming for a 95%+ average for top university admissions, our expert tutors bridge the gap between confusion and clarity.</p>
+                <div class="highlight-box">
+                    <strong>Our Mission:</strong> To illiminate complex academic concepts, build unwavering confidence, and instill critical problem-solving skills that last a lifetime.
+                </div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Students Tutoring" style="width: 100%; border-radius: 12px; box-shadow: var(--shadow);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section id="subjects">
+        <h2 class="section-title">Core STEM Subjects</h2>
+        <p class="section-subtitle">Specialized Grade 9 to 12 tutoring structured for maximum grade improvement.</p>
+        
+        <div class="subjects-grid">
+            <div class="subject-card">
+                <i class="fa-solid fa-calculator"></i>
+                <h3>Mathematics</h3>
+                <p>Principles of Math, Functions, Advanced Functions, Calculus & Vectors, Data Management.</p>
+            </div>
+            <div class="subject-card">
+                <i class="fa-solid fa-atom"></i>
+                <h3>Physics</h3>
+                <p>Kinematics, Forces, Energy, Electricity, Magnetism, and Quantum Concepts.</p>
+            </div>
+            <div class="subject-card">
+                <i class="fa-solid fa-flask"></i>
+                <h3>Chemistry</h3>
+                <p>Atomic Structure, Chemical Bonding, Reactions, Organic Chemistry, and Thermochemistry.</p>
+            </div>
+            <div class="subject-card">
+                <i class="fa-solid fa-dna"></i>
+                <h3>Biology</h3>
+                <p>Cellular Processes, Genetics, Metabolic Processes, Homeostasis, and Molecular Genetics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs & Delivery -->
+    <section id="programs">
+        <h2 class="section-title">Curriculum & Delivery Options</h2>
+        <p class="section-subtitle">Tailored learning streams to fit your academic goals and schedule.</p>
+
+        <div class="programs-container">
+            <div class="program-cards">
+                <div class="program-card">
+                    <h4>Regular Academic Stream</h4>
+                    <p>Aligned strictly with school board curriculums to boost day-to-day grades, assignment scores, and exam confidence.</p>
+                </div>
+                <div class="program-card featured">
+                    <h4>AP & IB Prep</h4>
+                    <p>Advanced Placement (AP) and International Baccalaureate (IB) specialized coaching designed for rigorous standards and high exam scores.</p>
+                </div>
+                <div class="program-card">
+                    <h4>In-Person & Online</h4>
+                    <p>Choose interactive in-person sessions at our modern learning centre or flexible, live 1-on-1 online tutoring from home.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="registration-section">
+        <h2 class="section-title">Student Registration & Assessment</h2>
+        <p class="section-subtitle">Fill out the form below to register or schedule a free academic consultation.</p>
+
+        <div class="form-container">
+            <!-- Replace YOUR_FORMSPREE_ID with your Formspree form ID to receive emails at mscentumtutors@gmail.com -->
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="parentName">Parent/Guardian Name</label>
+                        <input type="text" id="parentName" name="parentName" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input type="text" id="studentName" name="studentName" required placeholder="Jane Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(555) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="grade">Student Grade</label>
+                        <select id="grade" name="grade" required>
+                            <option value="">Select Grade</option>
+                            <option value="Grade 9">Grade 9</option>
+                            <option value="Grade 10">Grade 10</option>
+                            <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="program">Curriculum Stream</label>
+                        <select id="program" name="program" required>
+                            <option value="Regular">Regular Curriculum</option>
+                            <option value="AP">Advanced Placement (AP)</option>
+                            <option value="IB">International Baccalaureate (IB)</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="learningMode">Preferred Learning Mode</label>
+                        <select id="learningMode" name="learningMode" required>
+                            <option value="In-Person">In-Person Tutoring</option>
+                            <option value="Online">Online Live Tutoring</option>
+                            <option value="Hybrid">Hybrid (Both)</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Subjects Needed (Check all that apply)</label>
+                        <div style="display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap;">
+                            <label><input type="checkbox" name="subjects" value="Math"> Math</label>
+                            <label><input type="checkbox" name="subjects" value="Physics"> Physics</label>
+                            <label><input type="checkbox" name="subjects" value="Chemistry"> Chemistry</label>
+                            <label><input type="checkbox" name="subjects" value="Biology"> Biology</label>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="notes">Additional Details / Academic Goals</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Tell us about current grades, areas of concern, or upcoming exams..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Submit Registration Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact & Location Info -->
+    <section id="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">We are here to answer all your questions.</p>
+
+        <div class="contact-info-grid">
+            <div class="info-card">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                    <h4>Our Location</h4>
+                    <p>[Insert Street Address Here]</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                    <h4>Call or Text Us</h4>
+                    <p>[Insert Phone Number Here]</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                    <h4>Email Us</h4>
+                    <p>mscentumtutors@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Illiminate Learning Centre. All Rights Reserved. | Inspiring Excellence in Math & Science</p>
+    </footer>
+
+</body>
+</html>
